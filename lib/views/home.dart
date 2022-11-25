@@ -30,10 +30,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+  int _count = 0;
 
   void _onTabBarTap(int index) {
     setState(() {
       _currentIndex = index;
+      _count +=1;
     });
   }
 
@@ -45,10 +47,16 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         decoration: const BoxDecoration(color: Color(0xffffffff)),
-        child:  const Text(
-              "home page",
-              style: TextStyle(color: Color(0xffde4242))
-        ),
+        child: Container(
+           margin: const EdgeInsets.all(15.0),
+            decoration: const BoxDecoration(
+              color: Colors.cyan,
+            ),
+            child: const Text(
+                "home page",
+                style: TextStyle(color: Color(0xffde4242))
+            ),
+        ) ,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _bottomNavigationBarItems(),

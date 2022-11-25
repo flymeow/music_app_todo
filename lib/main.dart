@@ -23,6 +23,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return   MaterialApp(
       theme: AppTheme.basic,
+      title: "flutter_music",
       locale: const Locale('zh'),
         debugShowCheckedModeBanner: false,
       home: const LaunchPage()
