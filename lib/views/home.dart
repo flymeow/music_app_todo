@@ -65,13 +65,13 @@ List<BottomNavigationBarItem> _bottomNavigationBarItems() {
     return BottomNavigationBarItem(
       icon: Image.asset(
         item["icon"],
-        width: 24,
-        height: 24,
+        width: 16,
+        height: 16,
       ),
       activeIcon: Image.asset(
         item["active"],
-        width: 24,
-        height: 24,
+        width: 16,
+        height: 16,
       ),
       label: item["label"],
       tooltip: "",

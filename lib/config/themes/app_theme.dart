@@ -37,7 +37,7 @@ class AppTheme {
       splashFactory: NoSplash.splashFactory,
       // 文字颜色
       textTheme: const TextTheme(
-        bodyText2: TextStyle(
+        bodyMedium: TextStyle(
           color: Color(0xff7b7b7b),
         )
       ),
@@ -54,12 +54,16 @@ class AppTheme {
         elevation: 0,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        elevation: 200,
         backgroundColor: Color(0xfffbfbfb),
         selectedItemColor: Color(0xff464646),
         unselectedItemColor: Color(0xff7b7b7b),
         selectedLabelStyle: TextStyle(
           fontSize: 12,
         ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: 12,
+        )
       ),
     );
   }

@@ -24,7 +24,7 @@ class App extends StatelessWidget {
     return   MaterialApp(
       theme: AppTheme.basic,
       locale: const Locale('zh'),
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
       home: const LaunchPage()
     );
   }
