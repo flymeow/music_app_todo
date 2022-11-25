@@ -11,7 +11,7 @@ const List<Map> _bottomBarList = [
   {
     "icon": "assets/images/icons/cloud.png",
     "active": "assets/images/icons/cloud_active.png",
-    "label": "私有云",
+    "label": "收藏",
   },
   {
     "icon": "assets/images/icons/account.png",
@@ -71,16 +71,16 @@ class _HomeState extends State<Home> {
 List<BottomNavigationBarItem> _bottomNavigationBarItems() {
   return _bottomBarList.map((item) {
     return BottomNavigationBarItem(
-      icon: Image.asset(
+      icon: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 0, 2.0), child: Image.asset(
         item["icon"],
-        width: 24,
-        height: 24,
-      ),
-      activeIcon: Image.asset(
+        width: 16,
+        height: 16,
+      ),),
+      activeIcon: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 0, 2.0), child: Image.asset(
         item["active"],
-        width: 24,
-        height: 24,
-      ),
+        width: 16,
+        height: 16,
+      ),),
       label: item["label"],
       tooltip: "",
     );
