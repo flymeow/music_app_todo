@@ -10,6 +10,8 @@ class Collect extends StatefulWidget {
 class _CollectState extends State<Collect> {
   @override
   Widget build(BuildContext context) {
+    print("Collect page");
+
     return Container(
       child: const Text("Collect"),
     );

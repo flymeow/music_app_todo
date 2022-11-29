@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_music/app_page.dart';
 import 'package:flutter_music/views/home.dart';
 
 /*
@@ -37,7 +38,7 @@ class _LaunchPageState extends State<LaunchPage> {
     _timer.cancel();
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (BuildContext content) => const Home()),
+        MaterialPageRoute(builder: (BuildContext content) => const AppPage()),
         (route) => false);
   }
 
