@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_music/utils/utils.dart';
 
 class AppTheme {
   static const Color primaryColorLight = Color.fromRGBO(217,223,253,1);
@@ -7,7 +8,7 @@ class AppTheme {
 
   static ThemeData get basic {
     return ThemeData(
-      primarySwatch: Colors.indigo,
+      primarySwatch: Utils.createMaterialColor(const Color(0xfff63e52)),
       primaryColor: primaryColor,
       primaryColorLight: primaryColorLight,
       elevatedButtonTheme: ElevatedButtonThemeData(

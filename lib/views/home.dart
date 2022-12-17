@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_music/common/permissions/permissions.dart';
-
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatefulWidget {
