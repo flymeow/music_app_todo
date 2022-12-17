@@ -1,25 +1,8 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_music/common/permissions/permissions.dart';
 
-
-// 导航
-const List<Map> _bottomBarList = [
-  {
-    "icon": "assets/images/icons/home.png",
-    "active": "assets/images/icons/home_active.png",
-    "label": "首页",
-  },
-  {
-    "icon": "assets/images/icons/cloud.png",
-    "active": "assets/images/icons/cloud_active.png",
-    "label": "收藏",
-  },
-  {
-    "icon": "assets/images/icons/account.png",
-    "active": "assets/images/icons/account_active.png",
-    "label": "我的",
-  },
-];
-
+import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,61 +12,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentIndex = 0;
-  int _count = 0;
+  final OnAudioQuery _audioQuery = OnAudioQuery();
 
-  void _onTabBarTap(int index) {
-    setState(() {
-      _currentIndex = index;
-      _count +=1;
-    });
+  Future<void> _handlePermissions() async {
+    await Permissions.instance.req();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-      ),
-      body: Container(
-        decoration: const BoxDecoration(color: Color(0xffffffff)),
-        child: Container(
-           margin: const EdgeInsets.all(15.0),
-            decoration: const BoxDecoration(
-              color: Colors.cyan,
-            ),
-            child: const Text(
-                "home page",
-                style: TextStyle(color: Color(0xffde4242))
-            ),
-        ) ,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: _bottomNavigationBarItems(),
-        currentIndex: _currentIndex,
-        onTap: _onTabBarTap,
+    bool status = Permissions.instance.granted;
+    print("home page $status");
+    return Container(
+      child: ElevatedButton(
+        child: Text("grand"),
+        onPressed: _handlePermissions,
       ),
     );
   }
 }
-
-// 底部导航
-List<BottomNavigationBarItem> _bottomNavigationBarItems() {
-  return _bottomBarList.map((item) {
-    return BottomNavigationBarItem(
-      icon: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 0, 2.0), child: Image.asset(
-        item["icon"],
-        width: 16,
-        height: 16,
-      ),),
-      activeIcon: Padding(padding: const EdgeInsets.fromLTRB(0, 0, 0, 2.0), child: Image.asset(
-        item["active"],
-        width: 16,
-        height: 16,
-      ),),
-      label: item["label"],
-      tooltip: "",
-    );
-  }).toList();
-}
-
