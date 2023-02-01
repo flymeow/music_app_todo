@@ -35,9 +35,9 @@ class _HomeState extends State<AppPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pageList = [
-    Home(),
-    Collect(),
-    Account()
+    const Home(),
+    const Collect(),
+    const Account()
   ];
 
 

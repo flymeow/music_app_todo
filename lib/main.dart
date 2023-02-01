@@ -25,7 +25,7 @@ class App extends StatelessWidget {
       theme: AppTheme.basic,
       title: "flutter_music",
       locale: const Locale('zh'),
-        debugShowCheckedModeBanner: true,
+        debugShowCheckedModeBanner: false,
       home: const LaunchPage()
     );
   }
