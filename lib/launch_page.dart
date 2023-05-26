@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_music/app_page.dart';
-import 'package:flutter_music/views/home.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_music/app.dart';
+import 'package:flutter_music/views/home/home.dart';
+import 'package:go_router/go_router.dart';
 
 /*
 * @启动页
@@ -23,23 +25,45 @@ class _LaunchPageState extends State<LaunchPage> {
   void initState() {
     super.initState();
 
+    // 只显示顶部状态栏
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
+
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        systemNavigationBarColor: Color(0xfffc4850)));
+
     _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
-      setState(() {
-        currentTime--;
-      });
+      if (mounted) {
+        setState(() {
+          currentTime--;
+        });
+      }
       if (currentTime < 1) {
         jumpHandler();
       }
     });
   }
 
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent));
+
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+
+    super.dispose();
+  }
+
   // 倒计时后跳转
   void jumpHandler() {
     _timer.cancel();
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (BuildContext content) => const AppPage()),
-        (route) => false);
+    // context.go("/home");
+    context.pushReplacement("/bootstrap");
   }
 
   // 跳转浮动按钮
